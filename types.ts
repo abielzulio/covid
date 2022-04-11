@@ -10,7 +10,7 @@ export interface CountryInfo {
 export interface Country {
     updated: number;
     country: string;
-    countryInfo: CountryInfo;
+    countryInfo?: CountryInfo;
     cases: number;
     todayCases: number;
     deaths: number;
