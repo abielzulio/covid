@@ -32,3 +32,11 @@ export interface Country {
     recoveredPerOneMillion: number;
     criticalPerOneMillion: number;
 }
+
+export type Context = {
+    query: Query
+}
+
+export type Query = {
+    slug: string
+}
