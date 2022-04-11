@@ -13,6 +13,7 @@ import {
 } from '@chakra-ui/react'
 import { Country } from "../types"
 import { useColorModeValue } from '@chakra-ui/react'
+import NextLink from "next/link"
 
 const Home: NextPage<{ countries: Country[] }> = ({ countries }) => {
 
@@ -174,7 +175,14 @@ const Home: NextPage<{ countries: Country[] }> = ({ countries }) => {
                   return (
                     <Tr key={id}>
                       <Td>
-                        <Td>{ctr?.country}</Td>
+                        <NextLink href={{
+                            pathname: '/[slug]',
+                            query: { slug: ctr?.countryInfo?.iso2?.toLocaleLowerCase() }
+                            }} passHref>
+                          <Link>
+                            <Td>{ctr?.country}</Td>
+                          </Link>
+                        </NextLink>
                       </Td>
                       <Td>{ctr?.cases?.toLocaleString()}</Td>
                       <Td>{ctr?.active?.toLocaleString()}</Td>
