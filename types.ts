@@ -8,7 +8,7 @@ export interface CountryInfo {
 }
 
 export interface Country {
-    updated: number;
+    updated: string;
     country: string;
     countryInfo?: CountryInfo;
     cases: number;
