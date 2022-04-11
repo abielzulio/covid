@@ -30,7 +30,7 @@ const Home: NextPage<{ countries: Country[] }> = ({ countries }) => {
       })
   }, [])
 
-
+  /* Function to handle country change based on user selection */
   const onCountryChange: React.ChangeEventHandler = async (e: ChangeEvent<HTMLInputElement>): Promise<void> => {
     const countryCode = e.target.value
     const url = 
