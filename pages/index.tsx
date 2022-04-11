@@ -1,7 +1,7 @@
 import type { NextPage, GetStaticProps } from 'next'
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import Head from 'next/head'
-import { Container, Heading, Box, Flex, Center, Spacer, Text, Link } from '@chakra-ui/react'
+import { Container, Heading, Box, Flex, Spacer, Text, Link, Select } from '@chakra-ui/react'
 import {
   Table,
   Thead,
@@ -11,7 +11,6 @@ import {
   Td,
   TableContainer,
 } from '@chakra-ui/react'
-import { Select } from '@chakra-ui/react'
 import { Country } from "../types"
 import { useColorModeValue } from '@chakra-ui/react'
 
@@ -44,6 +43,7 @@ const Home: NextPage<{ countries: Country[] }> = ({ countries }) => {
         setCountryInfo(data)
       })
   }
+
   return (
     <div>
       <Head>
@@ -54,9 +54,9 @@ const Home: NextPage<{ countries: Country[] }> = ({ countries }) => {
 
       <Container maxWidth="container.xl" p={6}>
 
-        <Center>
-          <Heading as={'h1'} my={4}>Worldwide COVID-19 Cases Tracker</Heading>
-        </Center>
+        <Flex align="center" justify="center" mb={12} mt={4}>
+          <Heading as={'h1'}>Worldwide COVID-19 Cases Tracker</Heading>
+        </Flex>
 
         <Flex my={4}>
           <Box>
@@ -91,9 +91,13 @@ const Home: NextPage<{ countries: Country[] }> = ({ countries }) => {
               overflow={'hidden'}>
                 <Box w={'full'} bg={'yellow.400'} h={2} />
                 <Box p={4}>
-                  <Text fontSize={'xs'} fontWeight={'bold'}>ACTIVE</Text>
-                  <Text fontSize={'3xl'} color={'yellow.400'} my={1}>+{countryInfo?.todayCases?.toLocaleString() ?? "-"}</Text>
-                  <Text fontSize={'xs'} fontWeight={'normal'}>{countryInfo?.active?.toLocaleString() ?? "-"}</Text>
+                  <Text fontSize={'xs'} fontWeight={'bold'} mb={1}>ACTIVE</Text>
+                  <Text fontSize={'3xl'} color={'yellow.400'} mb={2}>+{countryInfo?.todayCases?.toLocaleString() ?? "-"}</Text>
+                  <Flex align={'center'} gap={2}>
+                    <Box bg={'yellow.100'} py={1} px={2} rounded={'md'} w={'auto'}>
+                      <Text fontSize={'xs'} fontWeight={'semibold'} color={'yellow.600'}>{countryInfo?.active?.toLocaleString() ?? "-"}</Text>
+                    </Box>
+                  </Flex>
                 </Box>
             </Box>
             <Spacer mx={"2"} />
@@ -109,7 +113,11 @@ const Home: NextPage<{ countries: Country[] }> = ({ countries }) => {
                 <Box p={4}>
                   <Text fontSize={"xs"} fontWeight={"bold"}>DEATH</Text>
                   <Text fontSize={"3xl"} color={"red.400"} my={1}>+{countryInfo?.todayDeaths?.toLocaleString() ?? "-"}</Text>
-                  <Text fontSize={"xs"} fontWeight={"normal"}>{countryInfo?.deaths?.toLocaleString() ?? "-"}</Text>
+                  <Flex align={'center'} gap={2}>
+                    <Box bg={'red.50'} py={1} px={2} rounded={'md'} w={'auto'}>
+                      <Text fontSize={'xs'} fontWeight={'semibold'} color={'red.600'}>{countryInfo?.deaths?.toLocaleString() ?? "-"}</Text>
+                    </Box>
+                  </Flex>
                 </Box>
             </Box>
             <Spacer mx={"2"} />
@@ -123,9 +131,13 @@ const Home: NextPage<{ countries: Country[] }> = ({ countries }) => {
               overflow={'hidden'}>
               <Box w={'full'} bg={'green.400'} h={2} />
               <Box p={4}>
-                <Text fontSize={"xs"} fontWeight={"bold"} opacity={10}>RECOVERED</Text>
+                <Text fontSize={"xs"} fontWeight={"bold"}>RECOVERED</Text>
                 <Text fontSize={"3xl"} color={"green.400"} my={1}>+{countryInfo?.todayRecovered?.toLocaleString() ?? "-"}</Text>
-                <Text fontSize={"xs"} fontWeight={"normal"}>{countryInfo?.recovered?.toLocaleString() ?? "-"}</Text>
+                <Flex align={'center'} gap={2}>
+                    <Box bg={'green.50'} py={1} px={2} rounded={'md'} w={'auto'}>
+                      <Text fontSize={'xs'} fontWeight={'semibold'} color={'green.600'}>{countryInfo?.recovered?.toLocaleString() ?? "-"}</Text>
+                    </Box>
+                </Flex>
               </Box>
               <Box/>
             </Box>
@@ -134,7 +146,7 @@ const Home: NextPage<{ countries: Country[] }> = ({ countries }) => {
 
         <Box mt={12}>
             <Heading as={'h3'} size={'md'}>Total Cases</Heading>
-            <Text my={1.5}>Worldwide</Text>
+            <Text my={1.5}>All Countries</Text>
         </Box>
 
         <Box
@@ -142,7 +154,7 @@ const Home: NextPage<{ countries: Country[] }> = ({ countries }) => {
           bg={useColorModeValue('white', 'gray.800')}
           boxShadow={'xl'}
           rounded={'md'}
-          h={"425px"}
+          h={"375px"}
           overflowY={"scroll"}
           px={2}
           pt={4}>
@@ -151,10 +163,10 @@ const Home: NextPage<{ countries: Country[] }> = ({ countries }) => {
               <Thead>
                 <Tr>
                   <Th>Country</Th>
-                  <Th>Total Cases</Th>
-                  <Th>Total Active</Th>
-                  <Th>Total Death</Th>
-                  <Th>Total Recovered</Th>
+                  <Th>Cases</Th>
+                  <Th>Active</Th>
+                  <Th>Death</Th>
+                  <Th>Recovered</Th>
                 </Tr>
               </Thead>
               <Tbody>
