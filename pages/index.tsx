@@ -69,8 +69,8 @@ export async function getAllCountries() {
 }
 
 /* Pre-render function to run getAllCountries() function on the server side */
-export const getStaticProps: GetStaticProps = async (context) => {
-  const countries = JSON.parse(JSON.stringify(await getAllCountries()))
+export const getStaticProps: GetStaticProps = async () => {
+  const countries: Country[] = JSON.parse(JSON.stringify(await getAllCountries()))
   return { props: { countries }}
 }
 
