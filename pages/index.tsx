@@ -1,8 +1,6 @@
 import type { NextPage, GetStaticProps } from 'next'
-import React from 'react'
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import Head from 'next/head'
-import { Container, Heading } from '@chakra-ui/react'
 import { Container, Heading, Box, Flex, Center, Spacer, Text, Link } from '@chakra-ui/react'
 import { Select } from '@chakra-ui/react'
 import { Country } from "../types"
@@ -32,19 +30,6 @@ const Home: NextPage<{ countries: Country[] }> = ({ countries }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Container maxWidth="container.xl" padding={12}>
-        <Heading as="h1" mb="4">Worldwide COVID-19 cases tracker</Heading>
-        <Select>
-            <option value="worldwide">Worldwide</option>
-            {countries.map((ctr: Country, id: number) => {
-              return (
-                  <option 
-                    key={id} 
-                    value={ctr.countryInfo.iso2}
-                  >{ctr.country}</option>
-              )
-            })}
-          </Select>
       <Container maxWidth="container.xl" p={6}>
 
         <Center>
