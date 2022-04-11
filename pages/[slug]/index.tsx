@@ -36,7 +36,7 @@ export const CountryPage: NextPage<{ ctr: Country }> = ({ ctr }) => {
                         <Heading as={'h1'} size={'xl'}>{ctr?.country}</Heading>
                         <Flex gap={3}>
                             <Box bg={'gray.100'} py={1} px={2} rounded={'md'} w={'auto'}>
-                                <Text fontSize={'xs'} fontWeight={'medium'} color={'gray.600'}>{ctr?.continent.toLocaleUpperCase() ?? "-"}</Text>
+                                <Text fontSize={'xs'} fontWeight={'medium'} color={'gray.600'}>{ctr?.continent?.toLocaleUpperCase() ?? "-"}</Text>
                             </Box>
                             <Box bg={'gray.100'} py={1} px={2} rounded={'md'} w={'auto'}>
                                 <Text fontSize={'xs'} fontWeight={'medium'} color={'gray.600'}>{ctr?.countryInfo?.iso2 ?? "-"}</Text>
