@@ -58,7 +58,7 @@ const Home: NextPage<{ countries: Country[] }> = ({ countries }) => {
           <Box>
             <Select onChange={onCountryChange}>
               <option value="worldwide">Worldwide</option>
-              {countries.map((ctr: Country, id: number) => {
+              {sortDataByTodayActiveCases(countries).map((ctr: Country, id: number) => {
                 return (
                     <option 
                       key={id} 
@@ -139,5 +139,14 @@ export const getStaticProps: GetStaticProps = async () => {
   const countries: Country[] = JSON.parse(JSON.stringify(await getAllCountries()))
   return { props: { countries }}
 }
+
+/* Function to sort country data by the most today's active cases number */
+export const sortDataByTodayActiveCases = (data: Country[]) => {
+  let sortedData = [...data]
+  sortedData.sort((a, b) => {
+    if (a.todayCases > b.todayCases) { return -1 } else { return 1 }
+  })
+  return sortedData
+};
 
 export default Home
