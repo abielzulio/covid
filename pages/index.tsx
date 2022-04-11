@@ -2,6 +2,15 @@ import type { NextPage, GetStaticProps } from 'next'
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import Head from 'next/head'
 import { Container, Heading, Box, Flex, Center, Spacer, Text, Link } from '@chakra-ui/react'
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  TableContainer,
+} from '@chakra-ui/react'
 import { Select } from '@chakra-ui/react'
 import { Country } from "../types"
 import { useColorModeValue } from '@chakra-ui/react'
@@ -123,6 +132,49 @@ const Home: NextPage<{ countries: Country[] }> = ({ countries }) => {
           </Flex>
         </Box>
 
+        <Box mt={12}>
+            <Heading as={'h3'} size={'md'}>Total Cases</Heading>
+            <Text my={1.5}>Worldwide</Text>
+        </Box>
+
+        <Box
+          my={6}              
+          bg={useColorModeValue('white', 'gray.800')}
+          boxShadow={'xl'}
+          rounded={'md'}
+          h={"425px"}
+          overflowY={"scroll"}
+          px={2}
+          pt={4}>
+          <TableContainer>
+            <Table variant='simple' size={"sm"}>
+              <Thead>
+                <Tr>
+                  <Th>Country</Th>
+                  <Th>Total Cases</Th>
+                  <Th>Total Active</Th>
+                  <Th>Total Death</Th>
+                  <Th>Total Recovered</Th>
+                </Tr>
+              </Thead>
+              <Tbody>
+                {sortDataByTodayActiveCases(countries).map((ctr: Country, id: number) => {
+                  return (
+                    <Tr key={id}>
+                      <Td>
+                        <Td>{ctr?.country}</Td>
+                      </Td>
+                      <Td>{ctr?.cases?.toLocaleString()}</Td>
+                      <Td>{ctr?.active?.toLocaleString()}</Td>
+                      <Td>{ctr?.deaths?.toLocaleString()}</Td>
+                      <Td>{ctr?.recovered?.toLocaleString()}</Td>
+                    </Tr>
+                  )
+                })}
+              </Tbody>
+            </Table>
+          </TableContainer>
+        </Box>
       </Container>
     </div>
   )
