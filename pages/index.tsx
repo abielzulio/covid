@@ -7,7 +7,8 @@ import { Country } from "../types"
 
 const Home: NextPage<{ countries: Country[] }> = ({ countries }) => {
 
-  const [countryInfo, setCountryInfo] = useState<Country>({})
+  const defaultValueCountryInfo = {}
+  const [countryInfo, setCountryInfo] = useState<Country>(defaultValueCountryInfo as Country)
   const [country, setInputCountry] = useState<string>("worldwide")
   const onCountryChange: React.ChangeEventHandler = async (e: ChangeEvent<HTMLInputElement>): Promise<void> => {
     const countryCode = e.target.value
