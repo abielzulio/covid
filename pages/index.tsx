@@ -187,6 +187,14 @@ const Home: NextPage<{ countries: Country[] }> = ({ countries }) => {
             </Table>
           </TableContainer>
         </Box>
+        <Flex align={'center'} mt={10}>
+          <Text color={"gray.500"}>Last updated on {new Date(countries[0].updated).toLocaleString()}</Text>
+          <Spacer />
+          <Flex gap={1}>
+            <Text>Made by <NextLink href="https://zulio.me" passHref><Link>Lio</Link></NextLink>,</Text>
+            <Text fontSize={'s'}>{new Date().getUTCFullYear()}.</Text>
+          </Flex>
+        </Flex>
       </Container>
     </div>
   )
