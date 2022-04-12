@@ -95,7 +95,7 @@ const Home: NextPage<{ countries: Country[] }> = ({ countries }) => {
                   <Text fontSize={'xs'} fontWeight={'bold'} mb={1}>ACTIVE</Text>
                   <Text fontSize={'3xl'} color={'yellow.400'} mb={2}>+{countryInfo?.todayCases?.toLocaleString() ?? "-"}</Text>
                   <Flex align={'center'} gap={2}>
-                    <Box bg={'yellow.100'} py={1} px={2} rounded={'md'} w={'auto'}>
+                    <Box bg={'yellow.50'} py={1} px={2} rounded={'md'} w={'auto'}>
                       <Text fontSize={'xs'} fontWeight={'semibold'} color={'yellow.600'}>{countryInfo?.active?.toLocaleString() ?? "-"}</Text>
                     </Box>
                   </Flex>
