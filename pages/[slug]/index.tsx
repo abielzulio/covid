@@ -16,7 +16,7 @@ export const CountryPage: NextPage<{ ctr: Country }> = ({ ctr }) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <Container maxWidth="container.xl" padding={12}>
+            <Container maxWidth="container.xl" px={6} py={24}>
 
                 <Flex mb={6}>
                     <NextLink href={{ pathname: '/' }} scroll={false} passHref>

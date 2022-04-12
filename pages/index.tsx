@@ -56,7 +56,7 @@ const Home: NextPage<{ countries: Country[] }> = ({ countries }) => {
       <Container maxWidth="container.xl" p={6}>
 
         <Flex align="center" justify="center" mb={12} mt={4}>
-          <Heading as={'h1'}>Worldwide COVID-19 Cases Tracker</Heading>
+          <Heading as={'h1'} fontWeight={'extrabold'}>Worldwide COVID-19 Cases Tracker</Heading>
         </Flex>
 
         <Flex my={4}>
@@ -195,7 +195,7 @@ const Home: NextPage<{ countries: Country[] }> = ({ countries }) => {
             </Table>
           </TableContainer>
         </Box>
-        <Flex align={'center'} mt={10}>
+        <Flex align={'center'} my={10}>
           <Text color={"gray.500"}>Last updated on {new Date(countries[0].updated).toLocaleString()}</Text>
           <Spacer />
           <Flex gap={1}>
