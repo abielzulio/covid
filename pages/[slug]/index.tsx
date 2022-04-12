@@ -60,7 +60,7 @@ export const CountryPage: NextPage<{ ctr: Country }> = ({ ctr }) => {
                 </Box>
 
                 <Box my={4}>
-                    <Flex >
+                    <Flex flexDirection={{ base: 'column', lg: 'row' }} gap={2}>
                         <Box
                             maxW={'full'}
                             minW={'100px'}
@@ -114,7 +114,7 @@ export const CountryPage: NextPage<{ ctr: Country }> = ({ ctr }) => {
                 </Box>
 
                 <Box my={4}>
-                    <Flex >
+                    <Flex flexDirection={{ base: 'column', lg: 'row' }} gap={2}>
                         <Box
                             maxW={'full'}
                             minW={'100px'}

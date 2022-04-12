@@ -81,7 +81,7 @@ const Home: NextPage<{ countries: Country[] }> = ({ countries }) => {
         </Flex>
 
         <Box my={6}>
-          <Flex >
+          <Flex flexDirection={{ base: 'column', lg: 'row' }} gap={{ base: 3 }}>
             <Box
               maxW={'full'}
               minW={'100px'}
